@@ -6,7 +6,7 @@ const images = galleryItems
     .map((image) => {
         const html = `<div class = "gallery__item">
     <a class = "gallery__link" href="${image.original}">
-    <img class="gallery__image" 
+    <img loading="lazy" class="gallery__image" 
     src="${image.preview}"
     alt="${image.description}"/></a></div>`;
         return html;
@@ -19,7 +19,7 @@ galleryEl.addEventListener("click", (event) => {
     if (event.target.tagName !== 'IMG') return;
     event.preventDefault();
     let instance = basicLightbox.create(
-        `<img  src="${event.target.parentNode.href}" alt = "${event.target.alt}" />`);
+        `<img loading="lazy" src="${event.target.parentNode.href}" alt = "${event.target.alt}" />`);
     instance.show();
     document.onkeydown = '';
     document.onkeydown = function (e) {
